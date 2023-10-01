@@ -1,3 +1,4 @@
+
 -- set vim options here (vim.<first_key>.<second_key> = value)
 return {
   opt = {
@@ -7,6 +8,7 @@ return {
     spell = false, -- sets vim.opt.spell
     signcolumn = "auto", -- sets vim.opt.signcolumn to auto
     wrap = false, -- sets vim.opt.wrap
+    colorcolumn = "80", -- sets vim.opt.colorcolumn to 80
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader

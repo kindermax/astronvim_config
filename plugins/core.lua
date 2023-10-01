@@ -20,6 +20,26 @@ return {
       return opts
     end,
   },
+  -- Themes
+  {
+    "navarasu/onedark.nvim",
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  --- Themes end
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("ibl").setup()
+    end
+  },
+  {
+    "tpope/vim-fugitive",
+  }
   -- You can disable default plugins as follows:
   -- { "max397574/better-escape.nvim", enabled = false },
   --
