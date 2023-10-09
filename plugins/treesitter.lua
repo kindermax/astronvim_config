@@ -12,7 +12,8 @@ return {
       "bash",
       "javascript", "typescript",
       "markdown",
-      "sql"
+      "sql",
+      "c",
     })
 
     opts.textobjects = {

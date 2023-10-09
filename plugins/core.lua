@@ -37,6 +37,66 @@ return {
       require("ibl").setup()
     end
   },
+  {
+    "linux-cultist/venv-selector.nvim",
+	  dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
+	  opts = {
+      name = ".venv",
+      auto_refresh = false
+    },
+	  event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+	  keys = {{
+      -- Keymap to open VenvSelector to pick a venv.
+		  "<leader>vs", "<cmd>:VenvSelect<cr>",
+		  -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
+		  "<leader>vc", "<cmd>:VenvSelectCached<cr>"
+	  }}
+	},
+	{
+	  "nvim-neo-tree/neo-tree.nvim",
+	  opts = function(_, opts) 
+	    opts.filesystem.filtered_items = {
+	      visible = true,
+	      hide_dotfiles = false,
+	      hide_gitignored = false,
+	      hide_by_name = {
+	        ".DS_Store",
+	        "node_modules",
+	        "__pycache__",
+	      }
+	    }
+	  end
+	},
+	{
+	  "nvim-telescope/telescope.nvim",
+    opts = function(_, opts)
+      return require("astronvim.utils").extend_tbl(opts, {
+        defaults = {
+          file_ignore_patterms = {
+            "node_modules",
+            "__pycache__",
+            ".DS_Store",
+            "package-lock.json",
+            "uaprom/public",
+            "uaprom/svg_icons",
+            "uaprom/sugarss",
+            "uaprom/mypy_stubs",
+          },
+          vimgrep_arguments = {
+            "rg",
+            "-L",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--hidden",
+          },
+        }
+      })
+    end
+	}
   -- You can disable default plugins as follows:
   -- { "max397574/better-escape.nvim", enabled = false },
   --

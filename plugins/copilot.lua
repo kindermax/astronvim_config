@@ -46,6 +46,7 @@ return {
           json = true,
           graphql = true,
           html = true,
+          c = true,
           ["*"] = false
         },
       })
